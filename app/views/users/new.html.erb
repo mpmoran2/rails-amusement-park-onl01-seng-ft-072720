@@ -2,41 +2,20 @@
 <p>You need an account to buy tickets and ride!</p>
 
 <%= form_for @user do |f| %>
-<div class="field">
-<label for="name">Name</label><br>
-<%= f.text_field :name %>
-</div>
-
-<div class="field">
-<label for="height">Height (inches)</label><br>
-<%= f.text_field :height %>
-</div>
-
-<div class="field">
-<label for="happiness">How happy are you? (1-5 scale)</label><br>
-<%= f.text_field :happiness %>
-</div>
-
-<div class="field">
-<label for="nausea">How nauseous are you? (1-5 scale)</label><br>
-<%= f.text_field :nausea %>
-</div>
-
-<div class="field">
-<label for="tickets">How many dollars are in your pocket?</label><br>
-<%= f.text_field :tickets %>
-</div>
-
-<div class="field">
-<label for="admin">Check if you are a theme park owner</label>
-<%= f.check_box :admin %>
-</div>
-
-<div class="field">
-<label for="password">Password</label><br>
-<%= f.password_field :password %>
-</div>
-
-<%= f.submit "Create User" %>
-
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :password %>
+    <%= f.password_field :password %><br>
+    <%= f.label :height, "Height (in inches)" %>
+    <%= f.number_field :height %><br>
+    <%= f.label :nausea, "How nauseous are you?" %>
+    <%= f.number_field :nausea %><br>
+    <%= f.label :happiness, "How happy are you?" %>
+    <%= f.number_field :happiness %><br>
+    <%= f.label :tickets, "How many dollars are in your pocket?" %>
+    <%= f.number_field :tickets %><br>
+    <%= f.label :admin, "Check box if you are a theme park owner" %>
+    <%= f.check_box :admin %><br>
+    <br>
+    <%= f.submit %>
 <% end %>

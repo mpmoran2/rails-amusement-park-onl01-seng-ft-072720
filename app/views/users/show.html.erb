@@ -1,20 +1,24 @@
-<% if flash[:alert] %>
-    <div>
-        <%= flash[:alert] %>
-    </div>
+<h1>Welcome to Rails Land <%= @user.name %></h1> 
+<p id="notice"><%= notice %></p>
+
+<% if flash[:message] %>
+  <div class="center alert">
+    <p><%= flash[:message] %></p>
+  </div>
 <% end %>
 
 <div class="user">
-    <h2>Profile Information</h2>
+    <h3>Profile Information</h3>
 
     <p><% if @user.admin%>
-        ADMIN
+        <h2>ADMIN</h2>
     <% end %></p>
 
-    <p><strong>Name:</strong> <%= @user.name %></p>
     <p><strong>Tickets:</strong> <%= @user.tickets %></p>
     <p><strong>Mood:</strong> <%= @user.mood %></p>
     <p><strong>Height:</strong> <%= @user.height %></p>
 
-    <a href="<%= attractions_path %>">See attractions</a>
+    <a href="<%= attractions_path %>">See attractions</a><br><br>
+    <%= link_to "Log Out", "/logout" %>
 </div>
+

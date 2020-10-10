@@ -1,15 +1,22 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, only: [:new, :show, :create]
+  resources :users
   resources :attractions
-  resources :rides, only: [:create]
-  resources :sessions, only: [:create]  
+  resources :rides
+  resources :sessions
 
   get '/signin', to: 'sessions#new'
+  post '/sessions', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'  
   get '/signup', to: 'users#new'
 
-  root 'static#home' 
+  get 'attractions/new'
+  get 'attractions/create'
+  get 'attractions/show'
+  get 'attractions/index'
+  get 'attractions/destroy'
+
+  root to: 'application#home' 
   #get '/users', to:'users#index', as: 'users'
   #post '/users', to:'users#create'
   #get '/users/:id', to: 'users#show', as: 'user'

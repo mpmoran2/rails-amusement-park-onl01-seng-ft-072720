@@ -1,14 +1,15 @@
 <h1>Sign In</h1>
-<%= form_with(url: sessions_path, method: :post) do %>
-    <div class="field">
-        <label for="name">Name</label><br>
-        <%= text_field_tag :name %>
-    </div>
+<%= flash[:notice] %>
 
-    <div class="field">
-        <label for="password">Password</label><br>
-        <%= password_field_tag :password %>
-    </div>
+<%= form_tag '/sessions', method: :post do %>
 
-    <%= submit_tag "Sign In" %>
+<%= label_tag "Name:" %>
+<%= collection_select  :user, :name, User.all, :name, :name, :prompt => 'Please select your username from this dropdown' %><br>
+
+<%= label_tag "Password:" %><br>
+<%= password_field_tag :user_password %>
+
+<br><br>
+<%= submit_tag "Sign In"%>
+
 <% end %>

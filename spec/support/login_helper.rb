@@ -25,7 +25,7 @@ module LoginHelper
 
   def admin_login
     select 'Walt Disney',from:'user_name'
-    fill_in("password", :with => "password")
+    fill_in("user_password", :with => "password")
     click_button('Sign In')
   end
 
@@ -39,6 +39,23 @@ module LoginHelper
       height: 50
       )
   end
+
+  def create_standard_and_admin_user
+    @mindy = User.create(
+      name: "Mindy",
+      password: "password",
+      happiness: 3,
+      nausea: 2,
+      tickets: 10,
+      height: 50
+    )
+    @walt = User.create(
+      name: "Walt Disney",
+      password: "password",
+      admin: true
+    )
+  end
+  
 
   def create_standard_and_admin_user
     @mindy = User.create(
